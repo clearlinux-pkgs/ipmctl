@@ -130,6 +130,7 @@ libipmctl.so.2:CheckPCDAutoConfVars
 libipmctl.so.2:CheckPfnExistence
 libipmctl.so.2:CheckSlotStatus
 libipmctl.so.2:CheckTopologyChange
+libipmctl.so.2:CheckViralPolicyConsistency
 libipmctl.so.2:ChecksumOperations
 libipmctl.so.2:CleanISLists
 libipmctl.so.2:CleanNamespaces
@@ -141,6 +142,7 @@ libipmctl.so.2:ClearInterleavedBuffer
 libipmctl.so.2:ClearInternalGoalConfigsInfo
 libipmctl.so.2:ClearNvmStatus
 libipmctl.so.2:ClearNvmStatusForObject
+libipmctl.so.2:ClearPcdCacheOnDimmList
 libipmctl.so.2:CombineDiagnosticsTestResults
 libipmctl.so.2:CompareDimmOrderInInterleaveSet
 libipmctl.so.2:CompareDimmOrderInInterleaveSet6Way
@@ -442,6 +444,7 @@ libipmctl.so.2:FwCmdGetPowerManagementPolicy
 libipmctl.so.2:FwCmdGetSecurityInfo
 libipmctl.so.2:FwCmdGetSmartAndHealth
 libipmctl.so.2:FwCmdGetSystemTime
+libipmctl.so.2:FwCmdGetViralPolicy
 libipmctl.so.2:FwCmdIdDimm
 libipmctl.so.2:FwCmdInjectError
 libipmctl.so.2:FwCmdSetAlarmThresholds
@@ -475,6 +478,7 @@ libipmctl.so.2:GetControlRegionTableForNvDimmRegionTable
 libipmctl.so.2:GetControlRegionTablesForPID
 libipmctl.so.2:GetControllerHandle
 libipmctl.so.2:GetCorrectClearMessageBasedOnProperty
+libipmctl.so.2:GetCurrentMilliseconds
 libipmctl.so.2:GetDataSet
 libipmctl.so.2:GetDataSetName
 libipmctl.so.2:GetDataSetNameInfo
@@ -693,10 +697,14 @@ libipmctl.so.2:IsDevicePathMultiInstance
 libipmctl.so.2:IsDevicePathValid
 libipmctl.so.2:IsDimmIdManageable
 libipmctl.so.2:IsDimmInterfaceCodeSupported
+libipmctl.so.2:IsDimmInterfaceCodeSupportedByValues
 libipmctl.so.2:IsDimmManageable
+libipmctl.so.2:IsDimmManageableByDimmInfo
+libipmctl.so.2:IsDimmManageableByValues
 libipmctl.so.2:IsDimmSkuModeMismatch
 libipmctl.so.2:IsDimmsMixedSkuCfg
 libipmctl.so.2:IsFwApiVersionSupported
+libipmctl.so.2:IsFwApiVersionSupportedByValues
 libipmctl.so.2:IsFwStaged
 libipmctl.so.2:IsHexOrDecimalNumber
 libipmctl.so.2:IsHexStr
@@ -710,6 +718,9 @@ libipmctl.so.2:IsNamespaceLocked
 libipmctl.so.2:IsNamespaceOnDimms
 libipmctl.so.2:IsNodeAtEnd
 libipmctl.so.2:IsNull
+libipmctl.so.2:IsPcdConfInputHeaderValid
+libipmctl.so.2:IsPcdConfOutputHeaderValid
+libipmctl.so.2:IsPcdCurrentConfHeaderValid
 libipmctl.so.2:IsPcdOemHeaderZero
 libipmctl.so.2:IsPointerInArray
 libipmctl.so.2:IsSetNvmStatus
@@ -717,6 +728,7 @@ libipmctl.so.2:IsSetNvmStatusForObject
 libipmctl.so.2:IsSkuMixed
 libipmctl.so.2:IsSkuModeMismatch
 libipmctl.so.2:IsSubsystemDeviceIdSupported
+libipmctl.so.2:IsSubsystemDeviceIdSupportedByValues
 libipmctl.so.2:IsUnicodeAlnumCharacter
 libipmctl.so.2:LShiftU64
 libipmctl.so.2:LabelIndexAreaToRawData
@@ -1205,6 +1217,7 @@ libipmctl.so.2:initAcpiTables
 libipmctl.so.2:init_protocol_bs
 libipmctl.so.2:init_protocol_shell_parameters_protocol
 libipmctl.so.2:init_protocol_simple_file_system_protocol
+libipmctl.so.2:init_record_file
 libipmctl.so.2:ioctl_passthrough_fw_cmd
 libipmctl.so.2:linux_err_to_nvm_lib_err
 libipmctl.so.2:load_nlog_dict
@@ -1225,6 +1238,8 @@ libipmctl.so.2:nvm_acpi_wait_for_event
 libipmctl.so.2:nvm_clear_action_required
 libipmctl.so.2:nvm_clear_dimm_lsa
 libipmctl.so.2:nvm_clear_injected_device_error
+libipmctl.so.2:nvm_conf_file_flush
+libipmctl.so.2:nvm_conf_file_init
 libipmctl.so.2:nvm_create_config_goal
 libipmctl.so.2:nvm_create_context
 libipmctl.so.2:nvm_current_cmd
@@ -1349,6 +1364,7 @@ libipmctl.so.2:passthru_os
 libipmctl.so.2:passthru_playback
 libipmctl.so.2:passthru_record_finalize
 libipmctl.so.2:passthru_record_setup
+libipmctl.so.2:preferences_flush_the_file
 libipmctl.so.2:preferences_get_string_ascii
 libipmctl.so.2:preferences_get_var
 libipmctl.so.2:preferences_get_var_ascii
@@ -1379,6 +1395,7 @@ libipmctl.so.2:s_strtrim
 libipmctl.so.2:s_strtrim_left
 libipmctl.so.2:s_strtrim_right
 libipmctl.so.2:save_table_to_file
+libipmctl.so.2:seek_to_record_offset
 libipmctl.so.2:set_timer
 libipmctl.so.2:showAcpi
 libipmctl.so.2:showHelp
@@ -1398,6 +1415,7 @@ libipmctl.so.2:u32_to_a
 libipmctl.so.2:uefi_to_os_ret_val
 libipmctl.so.2:uninitAcpiTables
 libipmctl.so.2:uninit_protocol_shell_parameters_protocol
+libipmctl.so.2:update_record_size
 libipmctl.so.2:volume_open
 libipmctl.so.2:wait_for_event
 libipmctl.so.2:wait_for_sec

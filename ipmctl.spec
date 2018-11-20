@@ -4,7 +4,7 @@
 #
 Name     : ipmctl
 Version  : 01.00.00.3344
-Release  : 5
+Release  : 6
 URL      : https://github.com/intel/ipmctl/archive/v01.00.00.3344.tar.gz
 Source0  : https://github.com/intel/ipmctl/archive/v01.00.00.3344.tar.gz
 Summary  : Manage Intel DC Optane persistent memory modules
@@ -33,14 +33,6 @@ BuildRequires : python3
 %description
 Oniguruma  ----   (C) K.Kosako <sndgk393 AT ybb DOT ne DOT jp>
 http://www.geocities.jp/kosako3/oniguruma/
-
-%package abi
-Summary: abi components for the ipmctl package.
-Group: Default
-
-%description abi
-abi components for the ipmctl package.
-
 
 %package bin
 Summary: bin components for the ipmctl package.
@@ -134,7 +126,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1541748400
+export SOURCE_DATE_EPOCH=1542738047
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -142,7 +134,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1541748400
+export SOURCE_DATE_EPOCH=1542738047
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ipmctl
 cp BaseTools/License.txt %{buildroot}/usr/share/package-licenses/ipmctl/BaseTools_License.txt
@@ -159,10 +151,6 @@ popd
 
 %files
 %defattr(-,root,root,-)
-
-%files abi
-%defattr(-,root,root,-)
-/usr/share/abi/libipmctl.so.3.1.0.abi
 
 %files bin
 %defattr(-,root,root,-)

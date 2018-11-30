@@ -4,7 +4,7 @@
 #
 Name     : ipmctl
 Version  : 01.00.00.3344
-Release  : 6
+Release  : 7
 URL      : https://github.com/intel/ipmctl/archive/v01.00.00.3344.tar.gz
 Source0  : https://github.com/intel/ipmctl/archive/v01.00.00.3344.tar.gz
 Summary  : Manage Intel DC Optane persistent memory modules
@@ -126,7 +126,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1542738047
+export SOURCE_DATE_EPOCH=1543599641
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -134,7 +134,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1542738047
+export SOURCE_DATE_EPOCH=1543599641
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ipmctl
 cp BaseTools/License.txt %{buildroot}/usr/share/package-licenses/ipmctl/BaseTools_License.txt
@@ -159,7 +159,7 @@ popd
 
 %files config
 %defattr(-,root,root,-)
-%config /usr/etc/logrotate.d/ipmctl.conf
+%exclude /usr/etc/logrotate.d/ipmctl.conf
 
 %files data
 %defattr(-,root,root,-)

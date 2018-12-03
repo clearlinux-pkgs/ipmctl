@@ -146,6 +146,7 @@ libipmctl.so.3:ClearInternalGoalConfigsInfo
 libipmctl.so.3:ClearNvmStatus
 libipmctl.so.3:ClearNvmStatusForObject
 libipmctl.so.3:ClearPcdCacheOnDimmList
+libipmctl.so.3:ClearRegionsGoal
 libipmctl.so.3:CombineDiagnosticsTestResults
 libipmctl.so.3:CompareDimmOrderInInterleaveSet
 libipmctl.so.3:CompareDimmOrderInInterleaveSet6Way
@@ -161,7 +162,6 @@ libipmctl.so.3:ContainsProperty
 libipmctl.so.3:ContainsValue
 libipmctl.so.3:ControllerRidToStr
 libipmctl.so.3:ConvertAppDirectGranularityPreference
-libipmctl.so.3:ConvertCapacityPerUnits
 libipmctl.so.3:ConvertDeviceNodeToText
 libipmctl.so.3:ConvertDevicePathToText
 libipmctl.so.3:ConvertDimmIdToDimmListStr
@@ -389,6 +389,7 @@ libipmctl.so.3:FileExists
 libipmctl.so.3:FileRead
 libipmctl.so.3:FillCommandInput
 libipmctl.so.3:FillDimmList
+libipmctl.so.3:FillSmbiosInfo
 libipmctl.so.3:FindADMemmapRangeInIS
 libipmctl.so.3:FindAndAssignISForNamespace
 libipmctl.so.3:FindChildDataSetByIndex
@@ -472,6 +473,7 @@ libipmctl.so.3:GetAcpiPcat
 libipmctl.so.3:GetAcpiTables
 libipmctl.so.3:GetActualRegionsGoalCapacities
 libipmctl.so.3:GetAlarmThresholds
+libipmctl.so.3:GetAllDimmList
 libipmctl.so.3:GetAllNvmStatusCodeMessages
 libipmctl.so.3:GetAndParseFwErrorLogForDimm
 libipmctl.so.3:GetAppDirectLabelByUUID
@@ -495,7 +497,6 @@ libipmctl.so.3:GetDdrtIoInitInfo
 libipmctl.so.3:GetDeviceAndFilePath
 libipmctl.so.3:GetDevicePathSize
 libipmctl.so.3:GetDiagnosticTestType
-libipmctl.so.3:GetDigitsStrAfterPointFromNumber
 libipmctl.so.3:GetDimm
 libipmctl.so.3:GetDimmARSStatusFromARSPayload
 libipmctl.so.3:GetDimmByHandle
@@ -537,6 +538,7 @@ libipmctl.so.3:GetFileSize
 libipmctl.so.3:GetFirstAndBoundSmBiosStructPointer
 libipmctl.so.3:GetFirstNode
 libipmctl.so.3:GetFlushHintTableForNvDimmRegionTable
+libipmctl.so.3:GetFormattedSizeString
 libipmctl.so.3:GetFreeRegionCapacity
 libipmctl.so.3:GetFwDebugLog
 libipmctl.so.3:GetGoalConfigs
@@ -598,6 +600,7 @@ libipmctl.so.3:GetPlatformConfigDataOemPartition
 libipmctl.so.3:GetPreferredDimmIdAsString
 libipmctl.so.3:GetPreferredValueAsString
 libipmctl.so.3:GetPreviousNode
+libipmctl.so.3:GetPropertyCount
 libipmctl.so.3:GetPropertyValue
 libipmctl.so.3:GetRawCapacity
 libipmctl.so.3:GetRealRawSizeAndRealBlockSize
@@ -609,7 +612,6 @@ libipmctl.so.3:GetRegions
 libipmctl.so.3:GetRelativePath
 libipmctl.so.3:GetReservedCapacity
 libipmctl.so.3:GetSecurityState
-libipmctl.so.3:GetSecurityStateForDimm
 libipmctl.so.3:GetSensorsInfo
 libipmctl.so.3:GetSingleNvmStatusCodeMessage
 libipmctl.so.3:GetSmartAndHealth
@@ -708,6 +710,7 @@ libipmctl.so.3:IsDevicePathValid
 libipmctl.so.3:IsDimmIdManageable
 libipmctl.so.3:IsDimmInterfaceCodeSupported
 libipmctl.so.3:IsDimmInterfaceCodeSupportedByValues
+libipmctl.so.3:IsDimmLocked
 libipmctl.so.3:IsDimmManageable
 libipmctl.so.3:IsDimmManageableByDimmInfo
 libipmctl.so.3:IsDimmManageableByValues
@@ -767,6 +770,7 @@ libipmctl.so.3:ModesSupportedToStr
 libipmctl.so.3:ModifyLabelAtSlot
 libipmctl.so.3:ModifyNamespace
 libipmctl.so.3:ModifyNamespaceLabels
+libipmctl.so.3:ModifyPcdConfig
 libipmctl.so.3:MultU64x32
 libipmctl.so.3:MyMemCopy
 libipmctl.so.3:NamespaceHealthToString
@@ -1191,6 +1195,7 @@ libipmctl.so.3:get_acpi_table
 libipmctl.so.3:get_dimm_by_handle
 libipmctl.so.3:get_dimm_id
 libipmctl.so.3:get_empty_string
+libipmctl.so.3:get_first_arg_from_va_list
 libipmctl.so.3:get_fw_err_log_stats
 libipmctl.so.3:get_hex_string
 libipmctl.so.3:get_last_error

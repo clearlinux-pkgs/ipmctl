@@ -123,6 +123,7 @@ libipmctl.so.3:CheckDimmNsLabelVersion
 libipmctl.so.3:CheckDimmsHealth
 libipmctl.so.3:CheckDisplayList
 libipmctl.so.3:CheckFirstFastRefreshConsistency
+libipmctl.so.3:CheckForLongOpStatusInProgress
 libipmctl.so.3:CheckFwConsistency
 libipmctl.so.3:CheckGoalStatus
 libipmctl.so.3:CheckIfLanguageIsSupported
@@ -518,6 +519,7 @@ libipmctl.so.3:GetDimmInfo
 libipmctl.so.3:GetDimmList
 libipmctl.so.3:GetDimmMappedMemSize
 libipmctl.so.3:GetDimmMemmap
+libipmctl.so.3:GetDimmReturnCode
 libipmctl.so.3:GetDimmSecurityState
 libipmctl.so.3:GetDimmSmbiosTable
 libipmctl.so.3:GetDimmUid

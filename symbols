@@ -461,6 +461,8 @@ libipmctl.so.3:FwCmdSetAlarmThresholds
 libipmctl.so.3:FwCmdSetOptionalConfigurationDataPolicy
 libipmctl.so.3:FwCmdSetPMONRegisters
 libipmctl.so.3:FwCmdSetPlatformConfigData
+libipmctl.so.3:FwGetPCDFromOffsetSmallPayload
+libipmctl.so.3:FwSetPCDFromOffsetSmallPayload
 libipmctl.so.3:GenerateChecksum
 libipmctl.so.3:GenerateCurrentTimeSeed
 libipmctl.so.3:GenerateNamespaceId
@@ -504,7 +506,6 @@ libipmctl.so.3:GetDimmByHandle
 libipmctl.so.3:GetDimmByIndex
 libipmctl.so.3:GetDimmByPid
 libipmctl.so.3:GetDimmBySerialNumber
-libipmctl.so.3:GetDimmBySmbusAddress
 libipmctl.so.3:GetDimmByUniqueIdentifier
 libipmctl.so.3:GetDimmCount
 libipmctl.so.3:GetDimmEfiDataIndex
@@ -750,6 +751,7 @@ libipmctl.so.3:LabelIndexAreaToRawData
 libipmctl.so.3:LastFwUpdateStatusToString
 libipmctl.so.3:LastShutdownStatusToStr
 libipmctl.so.3:Load
+libipmctl.so.3:LoadBinaryFile
 libipmctl.so.3:LoadFileAndCheckHeader
 libipmctl.so.3:LoadGoal
 libipmctl.so.3:LoadGoalConfig
@@ -1167,6 +1169,7 @@ libipmctl.so.3:bytes_to_u32
 libipmctl.so.3:cast_to_file_context_ptr
 libipmctl.so.3:check_acpi_table
 libipmctl.so.3:close_event
+libipmctl.so.3:config_is_large_payload_disabled
 libipmctl.so.3:containsOption
 libipmctl.so.3:create_event
 libipmctl.so.3:decode_nlog_binary

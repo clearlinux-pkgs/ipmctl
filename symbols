@@ -766,7 +766,6 @@ libipmctl.so.3:LookupDataSet
 libipmctl.so.3:MakeCapacityString
 libipmctl.so.3:MapRegionsGoal
 libipmctl.so.3:MapRequestToActualRegionGoalTemplates
-libipmctl.so.3:MapTagtoCurrentSessionState
 libipmctl.so.3:MatchCliReturnCode
 libipmctl.so.3:MatchCommand
 libipmctl.so.3:MatchCurrentARSStatus
@@ -814,6 +813,8 @@ libipmctl.so.3:ParseSourceDumpFile
 libipmctl.so.3:ParseSourcePassFile
 libipmctl.so.3:PassThru
 libipmctl.so.3:PassThruCommand
+libipmctl.so.3:PbrDcpmmDeserializeTagId
+libipmctl.so.3:PbrDcpmmSerializeTagId
 libipmctl.so.3:PbrDeserializeCtx
 libipmctl.so.3:PbrFreeSession
 libipmctl.so.3:PbrGetData

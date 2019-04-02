@@ -124,13 +124,13 @@ libipmctl.so.3:CheckConfigProtocolVersion
 libipmctl.so.3:CheckDimmNsLabelVersion
 libipmctl.so.3:CheckDimmsHealth
 libipmctl.so.3:CheckDisplayList
-libipmctl.so.3:CheckFirstFastRefreshConsistency
 libipmctl.so.3:CheckForLongOpStatusInProgress
 libipmctl.so.3:CheckFwConsistency
 libipmctl.so.3:CheckGoalStatus
 libipmctl.so.3:CheckIfLanguageIsSupported
 libipmctl.so.3:CheckImage
 libipmctl.so.3:CheckIsMemoryModeAllowed
+libipmctl.so.3:CheckMasterAndDefaultOptions
 libipmctl.so.3:CheckMemoryMap
 libipmctl.so.3:CheckPCDAutoConfVars
 libipmctl.so.3:CheckPfnExistence

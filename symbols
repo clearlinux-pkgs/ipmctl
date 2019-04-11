@@ -156,6 +156,8 @@ libipmctl.so.3:CompareDimmOrderInInterleaveSet6Way
 libipmctl.so.3:CompareGuid
 libipmctl.so.3:CompareMem
 libipmctl.so.3:CompareUint128
+libipmctl.so.3:ConfigIsDdrtProtocolDisabled
+libipmctl.so.3:ConfigIsLargePayloadDisabled
 libipmctl.so.3:ConsoleInput
 libipmctl.so.3:ContainGuid
 libipmctl.so.3:ContainTarget
@@ -212,6 +214,11 @@ libipmctl.so.3:DebugPrint
 libipmctl.so.3:DebugPrintEnabled
 libipmctl.so.3:DebugWriteSpiImageToFile
 libipmctl.so.3:DecimalToBcd8
+libipmctl.so.3:DecodeNfitNvDimmStateFlags
+libipmctl.so.3:DecodePcatCurrentMemoryMode
+libipmctl.so.3:DecodePcatInterleaveFormatSupported
+libipmctl.so.3:DecodePcatMemoryModeCapabilities
+libipmctl.so.3:DefaultPassThru
 libipmctl.so.3:DeleteDimm
 libipmctl.so.3:DeleteFile
 libipmctl.so.3:DeleteGoal
@@ -545,6 +552,7 @@ libipmctl.so.3:GetErrorLog
 libipmctl.so.3:GetFileSize
 libipmctl.so.3:GetFirstAndBoundSmBiosStructPointer
 libipmctl.so.3:GetFirstNode
+libipmctl.so.3:GetFisTransportAttributes
 libipmctl.so.3:GetFlushHintTableForNvDimmRegionTable
 libipmctl.so.3:GetFormattedSizeString
 libipmctl.so.3:GetFreeRegionCapacity
@@ -798,7 +806,9 @@ libipmctl.so.3:NvmDimmDriverDriverBindingSupported
 libipmctl.so.3:NvmDimmDriverDriverEntryPoint
 libipmctl.so.3:NvmDimmDriverUnload
 libipmctl.so.3:OpenFile
+libipmctl.so.3:OpenFileBinary
 libipmctl.so.3:OpenFileByDevice
+libipmctl.so.3:OpenFileWithFlag
 libipmctl.so.3:OpenNvmDimmProtocol
 libipmctl.so.3:OpenRootFileVolume
 libipmctl.so.3:Parse
@@ -1007,6 +1017,7 @@ libipmctl.so.3:SetDimmSecurityState
 libipmctl.so.3:SetDisplayInfo
 libipmctl.so.3:SetDriverPreferences
 libipmctl.so.3:SetEventCmd
+libipmctl.so.3:SetFisTransportAttributes
 libipmctl.so.3:SetImage
 libipmctl.so.3:SetKeyUserData
 libipmctl.so.3:SetKeyValue
@@ -1209,7 +1220,6 @@ libipmctl.so.3:bytes_to_u32
 libipmctl.so.3:cast_to_file_context_ptr
 libipmctl.so.3:check_acpi_table
 libipmctl.so.3:close_event
-libipmctl.so.3:config_is_large_payload_disabled
 libipmctl.so.3:containsOption
 libipmctl.so.3:create_event
 libipmctl.so.3:decode_nlog_binary

@@ -188,6 +188,7 @@ libipmctl.so.3:CopyMem
 libipmctl.so.3:CopyMem_8
 libipmctl.so.3:CopyMem_S
 libipmctl.so.3:CoreStartDiagnostics
+libipmctl.so.3:CoreStartDiagnosticsDetail
 libipmctl.so.3:CountNumberOfErrorsAndWarnings
 libipmctl.so.3:CrCharToUpper
 libipmctl.so.3:CrHexCharToUint
@@ -891,7 +892,6 @@ libipmctl.so.3:PrinterProcessSetBuffer
 libipmctl.so.3:PrinterSetCommandStatus
 libipmctl.so.3:PrinterSetData
 libipmctl.so.3:PrinterSetMsg
-libipmctl.so.3:ProcessDiagResults
 libipmctl.so.3:ProcessLibraryConstructorList
 libipmctl.so.3:ProcessLibraryDestructorList
 libipmctl.so.3:ProcessModuleEntryPointList
@@ -911,8 +911,8 @@ libipmctl.so.3:ReadFromInterleavedBuffer
 libipmctl.so.3:ReadLabelStorageArea
 libipmctl.so.3:ReadNamespaceBlock
 libipmctl.so.3:ReadNamespaceBytes
-libipmctl.so.3:ReadRunTimeCliDisplayPreferences
 libipmctl.so.3:ReadRunTimeDriverPreferences
+libipmctl.so.3:ReadRunTimePreferences
 libipmctl.so.3:ReadUnaligned16
 libipmctl.so.3:ReadUnaligned24
 libipmctl.so.3:ReadUnaligned32
@@ -985,20 +985,24 @@ libipmctl.so.3:RetrieveNamespacesFromLsa
 libipmctl.so.3:RetrievePcatSocketSkuInfoTable
 libipmctl.so.3:RetrieveRegionGoalFromInterleaveInformationTable
 libipmctl.so.3:RunConfigDiagnostics
+libipmctl.so.3:RunConfigDiagnosticsDetail
 libipmctl.so.3:RunFwDiagnostics
+libipmctl.so.3:RunFwDiagnosticsDetail
 libipmctl.so.3:RunQuickDiagnostics
+libipmctl.so.3:RunQuickDiagnosticsDetail
 libipmctl.so.3:RunSecurityDiagnostics
+libipmctl.so.3:RunSecurityDiagnosticsDetail
 libipmctl.so.3:RunningChecksum
 libipmctl.so.3:SPrintLength
 libipmctl.so.3:SafeAsciiStrToUnicodeStr
 libipmctl.so.3:SafeCapacityConversionToBytes
 libipmctl.so.3:SecurityCapabilitiesToStr
+libipmctl.so.3:SecurityStateBitmaskToString
 libipmctl.so.3:SecurityToString
 libipmctl.so.3:SelectReserveDimm
 libipmctl.so.3:SendConfigInputToDimm
 libipmctl.so.3:SendTheEventAndAppendToDiagnosticsResult
 libipmctl.so.3:SensorEnabledStateToString
-libipmctl.so.3:SensorStateToString
 libipmctl.so.3:SensorThresholdsToString
 libipmctl.so.3:SensorTypeToString
 libipmctl.so.3:SensorValueMeasure
@@ -1086,6 +1090,7 @@ libipmctl.so.3:SquashDataSet
 libipmctl.so.3:SquashDataSetCb
 libipmctl.so.3:StartDiagnostic
 libipmctl.so.3:StartDiagnosticCmd
+libipmctl.so.3:StartDiagnosticDetail
 libipmctl.so.3:StartFormat
 libipmctl.so.3:StartSession
 libipmctl.so.3:StopSession
@@ -1245,6 +1250,7 @@ libipmctl.so.3:firmware_update_status_to_enum
 libipmctl.so.3:getCPUID
 libipmctl.so.3:getCommandHelp
 libipmctl.so.3:getOptionValue
+libipmctl.so.3:getOverallCommandHelp
 libipmctl.so.3:getSyntaxError
 libipmctl.so.3:get_acpi_table
 libipmctl.so.3:get_dimm_by_handle

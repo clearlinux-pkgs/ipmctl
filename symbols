@@ -7,6 +7,7 @@ libipmctl.so.3:AddStringToUnicodeTable
 libipmctl.so.3:AlignLabelStorageArea
 libipmctl.so.3:AlignNamespaceCapacity
 libipmctl.so.3:AllDimmsInListAreManageable
+libipmctl.so.3:AllDimmsInListInSupportedConfig
 libipmctl.so.3:AllElementsInArrayZero
 libipmctl.so.3:AllocateCopyPool
 libipmctl.so.3:AllocateNamespaceCapacity
@@ -448,6 +449,7 @@ libipmctl.so.3:FwCmdGetARS
 libipmctl.so.3:FwCmdGetAlarmThresholds
 libipmctl.so.3:FwCmdGetBsr
 libipmctl.so.3:FwCmdGetCommandAccessPolicy
+libipmctl.so.3:FwCmdGetCommandEffectLog
 libipmctl.so.3:FwCmdGetDdrtIoInitInfo
 libipmctl.so.3:FwCmdGetDimmPartitionInfo
 libipmctl.so.3:FwCmdGetErrorCount
@@ -503,6 +505,7 @@ libipmctl.so.3:GetBlockDeviceBlockSize
 libipmctl.so.3:GetBwCommandStatus
 libipmctl.so.3:GetCapacities
 libipmctl.so.3:GetCommandAccessPolicy
+libipmctl.so.3:GetCommandEffectLog
 libipmctl.so.3:GetControlRegionTableForNvDimmRegionTable
 libipmctl.so.3:GetControlRegionTablesForPID
 libipmctl.so.3:GetControllerHandle
@@ -733,6 +736,7 @@ libipmctl.so.3:IsDevicePathEndType
 libipmctl.so.3:IsDevicePathMultiInstance
 libipmctl.so.3:IsDevicePathValid
 libipmctl.so.3:IsDimmIdManageable
+libipmctl.so.3:IsDimmInSupportedConfig
 libipmctl.so.3:IsDimmInterfaceCodeSupported
 libipmctl.so.3:IsDimmInterfaceCodeSupportedByValues
 libipmctl.so.3:IsDimmLocked
@@ -949,6 +953,7 @@ libipmctl.so.3:RegisterNonAdminUserCommands
 libipmctl.so.3:RegisterSetDimmCommand
 libipmctl.so.3:RegisterSetPreferencesCommand
 libipmctl.so.3:RegisterSetSensorCommand
+libipmctl.so.3:RegisterShowCelCommand
 libipmctl.so.3:RegisterShowCmdAccessPolicyCommand
 libipmctl.so.3:RegisterShowDimmsCommand
 libipmctl.so.3:RegisterShowErrorCommand
@@ -1060,6 +1065,7 @@ libipmctl.so.3:ShellCommandLibConstructor
 libipmctl.so.3:ShellCommandLibDestructor
 libipmctl.so.3:ShellLibConstructor
 libipmctl.so.3:ShellLibDestructor
+libipmctl.so.3:ShowCelCommand
 libipmctl.so.3:ShowCmdAccessPolicy
 libipmctl.so.3:ShowDimmMemmap
 libipmctl.so.3:ShowDimms

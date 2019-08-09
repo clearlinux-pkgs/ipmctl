@@ -1,4 +1,3 @@
 # This file contains pkgconfig build requirements that get picked up
 # but are undesirable. One entry per line, no whitespace.
 libndctl>=58.2
-safec-3.3>=03032018.0-g570fa5

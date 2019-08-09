@@ -4,7 +4,7 @@
 #
 Name     : ipmctl
 Version  : 02.00.00.3554
-Release  : 23
+Release  : 24
 URL      : https://github.com/intel/ipmctl/archive/v02.00.00.3554/ipmctl-02.00.00.3554.tar.gz
 Source0  : https://github.com/intel/ipmctl/archive/v02.00.00.3554/ipmctl-02.00.00.3554.tar.gz
 Summary  : Manage Intel DC Optane persistent memory modules
@@ -19,19 +19,14 @@ BuildRequires : buildreq-distutils3
 BuildRequires : doxygen
 BuildRequires : git
 BuildRequires : glibc-dev
-BuildRequires : libsafec-dev
 BuildRequires : pkg-config
 BuildRequires : pkgconfig(libndctl)
 BuildRequires : pkgconfig(systemd)
 BuildRequires : python3
 
 %description
-### Introduction
-Brotli is a generic-purpose lossless compression algorithm that compresses data
-using a combination of a modern variant of the LZ77 algorithm, Huffman coding
-and 2nd order context modeling, with a compression ratio comparable to the best
-currently available general-purpose compression methods. It is similar in speed
-with deflate but offers more dense compression.
+Oniguruma  ----   (C) K.Kosako <sndgk393 AT ybb DOT ne DOT jp>
+http://www.geocities.jp/kosako3/oniguruma/
 
 %package bin
 Summary: bin components for the ipmctl package.
@@ -58,7 +53,6 @@ Requires: ipmctl-lib = %{version}-%{release}
 Requires: ipmctl-bin = %{version}-%{release}
 Requires: ipmctl-data = %{version}-%{release}
 Provides: ipmctl-devel = %{version}-%{release}
-Requires: ipmctl = %{version}-%{release}
 Requires: ipmctl = %{version}-%{release}
 
 %description dev
@@ -99,7 +93,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1564756891
+export SOURCE_DATE_EPOCH=1565373057
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -115,7 +109,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1564756891
+export SOURCE_DATE_EPOCH=1565373057
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ipmctl
 cp BaseTools/License.txt %{buildroot}/usr/share/package-licenses/ipmctl/BaseTools_License.txt

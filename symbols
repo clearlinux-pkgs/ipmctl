@@ -208,7 +208,6 @@ libipmctl.so.3:CreateDeviceNode
 libipmctl.so.3:CreateGoal
 libipmctl.so.3:CreateGoalConfig
 libipmctl.so.3:CreateKeyVal
-libipmctl.so.3:CreateMailbox
 libipmctl.so.3:CreateNamespace
 libipmctl.so.3:CreateNamespaceLabels
 libipmctl.so.3:CreateRegionGoal
@@ -434,7 +433,6 @@ libipmctl.so.3:FreeDimmPcdInfoArray
 libipmctl.so.3:FreeISResources
 libipmctl.so.3:FreeKeyValMem
 libipmctl.so.3:FreeLsaSafe
-libipmctl.so.3:FreeMailbox
 libipmctl.so.3:FreeMemmapItems
 libipmctl.so.3:FreeParsedNfit
 libipmctl.so.3:FreeParsedPcat
@@ -572,7 +570,6 @@ libipmctl.so.3:GetImage
 libipmctl.so.3:GetImageInfo
 libipmctl.so.3:GetInterleaveTable
 libipmctl.so.3:GetKeyCount
-libipmctl.so.3:GetKeyDimmRegisters
 libipmctl.so.3:GetKeyUserData
 libipmctl.so.3:GetKeyValue
 libipmctl.so.3:GetKeyValueBool

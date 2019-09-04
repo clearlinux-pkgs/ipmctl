@@ -24,6 +24,7 @@ libipmctl.so.3:AppendDevicePathInstance
 libipmctl.so.3:AppendDevicePathNode
 libipmctl.so.3:AppendToDiagnosticsResult
 libipmctl.so.3:ApplyGoalConfigsToDimms
+libipmctl.so.3:AreRequestedDimmsSecurityUnlocked
 libipmctl.so.3:AsciiSPrint
 libipmctl.so.3:AsciiStrCat
 libipmctl.so.3:AsciiStrCatS
@@ -414,6 +415,7 @@ libipmctl.so.3:FindRegionGoalDimm
 libipmctl.so.3:FindRelatedDimmsByRegionGoalConfigs
 libipmctl.so.3:FindRelatedDimmsByRegions
 libipmctl.so.3:FindUniqueRegionsGoal
+libipmctl.so.3:FixHelp
 libipmctl.so.3:FlushInterleavedBuffer
 libipmctl.so.3:ForceStartTheDriver
 libipmctl.so.3:FormatString
@@ -1137,6 +1139,8 @@ libipmctl.so.3:SwapBytes32
 libipmctl.so.3:SwapBytes64
 libipmctl.so.3:SwapListEntries
 libipmctl.so.3:SystemTimeCheck
+libipmctl.so.3:TargetCount
+libipmctl.so.3:TargetMatchCount
 libipmctl.so.3:ThresholdsCheck
 libipmctl.so.3:ToUpper
 libipmctl.so.3:TransformFwTempToRealValue

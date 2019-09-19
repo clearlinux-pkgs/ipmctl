@@ -138,6 +138,7 @@ libipmctl.so.3:CheckIsMemoryModeAllowed
 libipmctl.so.3:CheckMasterAndDefaultOptions
 libipmctl.so.3:CheckMemModeCapabilities
 libipmctl.so.3:CheckMemoryMap
+libipmctl.so.3:CheckNmFmLimits
 libipmctl.so.3:CheckPCDAutoConfVars
 libipmctl.so.3:CheckPfnExistence
 libipmctl.so.3:CheckSlotStatus
@@ -685,7 +686,6 @@ libipmctl.so.3:InitializeListHead
 libipmctl.so.3:InitializeNamespaces
 libipmctl.so.3:InitializeNfitDimmInfoFieldsFromDimm
 libipmctl.so.3:InjectError
-libipmctl.so.3:InsertDimm
 libipmctl.so.3:InsertHeadList
 libipmctl.so.3:InsertNamespaceLabels
 libipmctl.so.3:InsertTailList
@@ -742,6 +742,7 @@ libipmctl.so.3:IsDimmLocked
 libipmctl.so.3:IsDimmManageable
 libipmctl.so.3:IsDimmManageableByDimmInfo
 libipmctl.so.3:IsDimmManageableByValues
+libipmctl.so.3:IsDimmNotAllowed
 libipmctl.so.3:IsDimmSkuModeMismatch
 libipmctl.so.3:IsDimmsMixedSkuCfg
 libipmctl.so.3:IsFwApiVersionSupported
@@ -865,6 +866,7 @@ libipmctl.so.3:PfnRead
 libipmctl.so.3:PfnValidateInfo
 libipmctl.so.3:PfnWrite
 libipmctl.so.3:PollLongOpStatus
+libipmctl.so.3:PopulateSmbusFields
 libipmctl.so.3:PopulateSubsystemDeviceIdList
 libipmctl.so.3:Pow
 libipmctl.so.3:PrepareAndSendCommandRegisterCmd

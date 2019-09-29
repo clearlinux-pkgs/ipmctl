@@ -235,6 +235,7 @@ libipmctl.so.3:DeletePcd
 libipmctl.so.3:DeletePcdCmd
 libipmctl.so.3:DeleteRegionsGoalConfigs
 libipmctl.so.3:DeserializePbrMode
+libipmctl.so.3:DeterminePassThruMethod
 libipmctl.so.3:DetermineRegionHealth
 libipmctl.so.3:DetermineRegionType
 libipmctl.so.3:DevPathFromText1394
@@ -469,6 +470,7 @@ libipmctl.so.3:FwCmdGetPlatformConfigData
 libipmctl.so.3:FwCmdGetPlatformConfigDataSize
 libipmctl.so.3:FwCmdGetPowerManagementPolicy
 libipmctl.so.3:FwCmdGetSecurityInfo
+libipmctl.so.3:FwCmdGetSecurityOptIn
 libipmctl.so.3:FwCmdGetSmartAndHealth
 libipmctl.so.3:FwCmdGetSystemTime
 libipmctl.so.3:FwCmdGetViralPolicy
@@ -753,6 +755,7 @@ libipmctl.so.3:IsHexStr
 libipmctl.so.3:IsHexValue
 libipmctl.so.3:IsHexaDecimalDigitCharacter
 libipmctl.so.3:IsLSANotInitializedOnDimms
+libipmctl.so.3:IsLargePayloadAvailable
 libipmctl.so.3:IsLeaf
 libipmctl.so.3:IsListEmpty
 libipmctl.so.3:IsListInitialized
@@ -866,6 +869,7 @@ libipmctl.so.3:PfnRead
 libipmctl.so.3:PfnValidateInfo
 libipmctl.so.3:PfnWrite
 libipmctl.so.3:PollLongOpStatus
+libipmctl.so.3:PopulateDimmBsrAndBootStatusBitmask
 libipmctl.so.3:PopulateSmbusFields
 libipmctl.so.3:PopulateSubsystemDeviceIdList
 libipmctl.so.3:Pow
@@ -1001,6 +1005,7 @@ libipmctl.so.3:RunFwDiagnostics
 libipmctl.so.3:RunQuickDiagnostics
 libipmctl.so.3:RunSecurityDiagnostics
 libipmctl.so.3:RunningChecksum
+libipmctl.so.3:S3ResumeOptInToString
 libipmctl.so.3:SPrintLength
 libipmctl.so.3:SafeAsciiStrToUnicodeStr
 libipmctl.so.3:SafeCapacityConversionToBytes

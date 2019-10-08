@@ -979,6 +979,7 @@ libipmctl.so.3:RegisterStartDiagnosticCommand
 libipmctl.so.3:RegisterStartFormatCommand
 libipmctl.so.3:RegisterStartSessionCommand
 libipmctl.so.3:RegisterStopSessionCommand
+libipmctl.so.3:RemoveAllWhiteSpace
 libipmctl.so.3:RemoveDimm
 libipmctl.so.3:RemoveDimmInventory
 libipmctl.so.3:RemoveEntryList
@@ -1203,6 +1204,7 @@ libipmctl.so.3:ValidateRegionsCorrelations
 libipmctl.so.3:VerifyCreatingSupportedRegionConfigs
 libipmctl.so.3:VerifyDeletingSupportedRegionConfigs
 libipmctl.so.3:VerifyInterleaveSetsPlatformSupport
+libipmctl.so.3:VerifyNonfunctionalTargetDimms
 libipmctl.so.3:VerifyPlatformSupport
 libipmctl.so.3:VerifySKUSupportForCreateGoal
 libipmctl.so.3:VerifyTargetDimms

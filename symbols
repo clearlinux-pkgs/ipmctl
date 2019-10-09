@@ -595,7 +595,6 @@ libipmctl.so.3:GetLsaFreeSlots
 libipmctl.so.3:GetLsaIndexes
 libipmctl.so.3:GetManageableDimmsNumberAndId
 libipmctl.so.3:GetMaxPid
-libipmctl.so.3:GetMaximumBlockNamespaceSize
 libipmctl.so.3:GetMemoryResourcesInfo
 libipmctl.so.3:GetNSLabelMajorMinorVersion
 libipmctl.so.3:GetNamespaceById
@@ -1106,7 +1105,6 @@ libipmctl.so.3:StartDiagnosticCmd
 libipmctl.so.3:StartFormat
 libipmctl.so.3:StartSession
 libipmctl.so.3:StopSession
-libipmctl.so.3:StorageIo
 libipmctl.so.3:StrCat
 libipmctl.so.3:StrCatS
 libipmctl.so.3:StrCmp

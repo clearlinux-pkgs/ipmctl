@@ -465,6 +465,7 @@ libipmctl.so.3:FwCmdGetMemoryInfoPage
 libipmctl.so.3:FwCmdGetOptionalConfigurationDataPolicy
 libipmctl.so.3:FwCmdGetPMONRegisters
 libipmctl.so.3:FwCmdGetPackageSparingPolicy
+libipmctl.so.3:FwCmdGetPcdLargePayload
 libipmctl.so.3:FwCmdGetPcdSmallPayload
 libipmctl.so.3:FwCmdGetPlatformConfigData
 libipmctl.so.3:FwCmdGetPlatformConfigDataSize

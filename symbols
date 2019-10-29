@@ -803,7 +803,6 @@ libipmctl.so.3:MemoryTypeToStr
 libipmctl.so.3:MergeMemmapItems
 libipmctl.so.3:ModesSupportedToStr
 libipmctl.so.3:ModifyLabelAtSlot
-libipmctl.so.3:ModifyNamespace
 libipmctl.so.3:ModifyNamespaceLabels
 libipmctl.so.3:ModifyPcdConfig
 libipmctl.so.3:MultU64x32
@@ -1145,7 +1144,6 @@ libipmctl.so.3:SwapBytes16
 libipmctl.so.3:SwapBytes32
 libipmctl.so.3:SwapBytes64
 libipmctl.so.3:SwapListEntries
-libipmctl.so.3:SystemTimeCheck
 libipmctl.so.3:TargetCount
 libipmctl.so.3:TargetMatchCount
 libipmctl.so.3:ThresholdsCheck
@@ -1343,11 +1341,13 @@ libipmctl.so.3:nvm_get_number_of_devices
 libipmctl.so.3:nvm_get_number_of_events
 libipmctl.so.3:nvm_get_number_of_memory_topology_devices
 libipmctl.so.3:nvm_get_number_of_regions
+libipmctl.so.3:nvm_get_number_of_regions_ex
 libipmctl.so.3:nvm_get_number_of_sockets
 libipmctl.so.3:nvm_get_nvm_capabilities
 libipmctl.so.3:nvm_get_nvm_capacities
 libipmctl.so.3:nvm_get_pmon_registers
 libipmctl.so.3:nvm_get_regions
+libipmctl.so.3:nvm_get_regions_ex
 libipmctl.so.3:nvm_get_sensor
 libipmctl.so.3:nvm_get_sensors
 libipmctl.so.3:nvm_get_socket

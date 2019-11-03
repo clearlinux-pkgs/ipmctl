@@ -683,6 +683,7 @@ libipmctl.so.3:InitializeDimms
 libipmctl.so.3:InitializeIS
 libipmctl.so.3:InitializeISFromNfit
 libipmctl.so.3:InitializeISs
+libipmctl.so.3:InitializeInterleaveSets
 libipmctl.so.3:InitializeLabelStorageArea
 libipmctl.so.3:InitializeListHead
 libipmctl.so.3:InitializeNamespaces

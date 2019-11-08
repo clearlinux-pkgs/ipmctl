@@ -4,14 +4,13 @@
 #
 Name     : ipmctl
 Version  : 02.00.00.3630
-Release  : 37
+Release  : 38
 URL      : https://github.com/intel/ipmctl/archive/v02.00.00.3630/ipmctl-02.00.00.3630.tar.gz
 Source0  : https://github.com/intel/ipmctl/archive/v02.00.00.3630/ipmctl-02.00.00.3630.tar.gz
 Summary  : Manage Intel DC Optane persistent memory modules
 Group    : Development/Tools
 License  : BSD-2-Clause BSD-3-Clause MIT
 Requires: ipmctl-bin = %{version}-%{release}
-Requires: ipmctl-config = %{version}-%{release}
 Requires: ipmctl-data = %{version}-%{release}
 Requires: ipmctl-lib = %{version}-%{release}
 Requires: ipmctl-license = %{version}-%{release}
@@ -26,30 +25,17 @@ BuildRequires : pkgconfig(systemd)
 BuildRequires : python3
 
 %description
-### Introduction
-Brotli is a generic-purpose lossless compression algorithm that compresses data
-using a combination of a modern variant of the LZ77 algorithm, Huffman coding
-and 2nd order context modeling, with a compression ratio comparable to the best
-currently available general-purpose compression methods. It is similar in speed
-with deflate but offers more dense compression.
+Oniguruma  ----   (C) K.Kosako <sndgk393 AT ybb DOT ne DOT jp>
+http://www.geocities.jp/kosako3/oniguruma/
 
 %package bin
 Summary: bin components for the ipmctl package.
 Group: Binaries
 Requires: ipmctl-data = %{version}-%{release}
-Requires: ipmctl-config = %{version}-%{release}
 Requires: ipmctl-license = %{version}-%{release}
 
 %description bin
 bin components for the ipmctl package.
-
-
-%package config
-Summary: config components for the ipmctl package.
-Group: Default
-
-%description config
-config components for the ipmctl package.
 
 
 %package data
@@ -67,7 +53,6 @@ Requires: ipmctl-lib = %{version}-%{release}
 Requires: ipmctl-bin = %{version}-%{release}
 Requires: ipmctl-data = %{version}-%{release}
 Provides: ipmctl-devel = %{version}-%{release}
-Requires: ipmctl = %{version}-%{release}
 Requires: ipmctl = %{version}-%{release}
 
 %description dev
@@ -102,16 +87,16 @@ license components for the ipmctl package.
 
 %prep
 %setup -q -n ipmctl-02.00.00.3630
+cd %{_builddir}/ipmctl-02.00.00.3630
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1573159625
+export SOURCE_DATE_EPOCH=1573244404
 mkdir -p clr-build
 pushd clr-build
-# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -125,7 +110,7 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1573159625
+export SOURCE_DATE_EPOCH=1573244404
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ipmctl
 cp %{_builddir}/ipmctl-02.00.00.3630/BaseTools/License.txt %{buildroot}/usr/share/package-licenses/ipmctl/716291b5f2b61d3f09e8695d22dc8b539d8c9648
@@ -140,7 +125,7 @@ pushd clr-build
 %make_install
 popd
 ## Remove excluded files
-rm -f %{buildroot}/usr/etc/logrotate.d/ipmctl.conf
+rm -f %{buildroot}/usr/etc/logrotate.d/ipmctl
 
 %files
 %defattr(-,root,root,-)
@@ -148,10 +133,6 @@ rm -f %{buildroot}/usr/etc/logrotate.d/ipmctl.conf
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/ipmctl
-
-%files config
-%defattr(-,root,root,-)
-%config /usr/etc/logrotate.d/ipmctl
 
 %files data
 %defattr(-,root,root,-)

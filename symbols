@@ -990,9 +990,7 @@ libipmctl.so.4:ResetCmdStatus
 libipmctl.so.4:ResolveDeviceType
 libipmctl.so.4:RetrieveAppDirectMappingFromNfit
 libipmctl.so.4:RetrieveChannelWaysFromInterleaveSetMap
-libipmctl.so.4:RetrieveCmdStatusObjectStrings
 libipmctl.so.4:RetrieveDimmRegisters
-libipmctl.so.4:RetrieveDimmsWithBrokenISs
 libipmctl.so.4:RetrieveGoalConfigsFromPlatformConfigData
 libipmctl.so.4:RetrieveISFromInterleaveInformationTable
 libipmctl.so.4:RetrieveISsFromNfit

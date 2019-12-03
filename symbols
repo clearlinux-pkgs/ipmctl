@@ -882,6 +882,7 @@ libipmctl.so.4:PrintAppDirectSettings
 libipmctl.so.4:PrintDataSetAsTextTable
 libipmctl.so.4:PrintDimmMemmap
 libipmctl.so.4:PrintFitTable
+libipmctl.so.4:PrintInvalidAcpiRevisionString
 libipmctl.so.4:PrintLabelStorageArea
 libipmctl.so.4:PrintLsaHex
 libipmctl.so.4:PrintNFit

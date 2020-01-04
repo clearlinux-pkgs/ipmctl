@@ -960,6 +960,7 @@ libipmctl.so.4:RegisterNonAdminUserCommands
 libipmctl.so.4:RegisterSetDimmCommand
 libipmctl.so.4:RegisterSetPreferencesCommand
 libipmctl.so.4:RegisterSetSensorCommand
+libipmctl.so.4:RegisterShowAcpiCommand
 libipmctl.so.4:RegisterShowCelCommand
 libipmctl.so.4:RegisterShowCmdAccessPolicyCommand
 libipmctl.so.4:RegisterShowDimmsCommand
@@ -1428,7 +1429,6 @@ libipmctl.so.4:preferences_set_var_string_ascii
 libipmctl.so.4:preferences_set_var_string_wide
 libipmctl.so.4:preferences_uninit
 libipmctl.so.4:process_output
-libipmctl.so.4:registerShowAcpiCommand
 libipmctl.so.4:s_digitstrtouc
 libipmctl.so.4:s_snprintf
 libipmctl.so.4:s_strcat

@@ -442,6 +442,7 @@ libipmctl.so.4:FreeParsedPmtt
 libipmctl.so.4:FreePool
 libipmctl.so.4:FreeStringArray
 libipmctl.so.4:FreeUnicodeStringTable
+libipmctl.so.4:FwActivateOptInToString
 libipmctl.so.4:FwCmdDeviceCharacteristics
 libipmctl.so.4:FwCmdDisableARS
 libipmctl.so.4:FwCmdFormatDimm
@@ -918,6 +919,7 @@ libipmctl.so.4:PromptYesNo
 libipmctl.so.4:PromptedInput
 libipmctl.so.4:PropertyToDouble
 libipmctl.so.4:PropertyToUint64
+libipmctl.so.4:QuiesceRequiredToString
 libipmctl.so.4:RShiftU64
 libipmctl.so.4:RandomizeBuffer
 libipmctl.so.4:RawDataToLabelIndexArea
@@ -1011,8 +1013,10 @@ libipmctl.so.4:RunSecurityDiagnostics
 libipmctl.so.4:RunningChecksum
 libipmctl.so.4:S3ResumeOptInToString
 libipmctl.so.4:SPrintLength
+libipmctl.so.4:SVNDowngradeOptInToString
 libipmctl.so.4:SafeAsciiStrToUnicodeStr
 libipmctl.so.4:SafeCapacityConversionToBytes
+libipmctl.so.4:SecureErasePolicyOptInToString
 libipmctl.so.4:SecurityCapabilitiesToStr
 libipmctl.so.4:SecurityStateBitmaskToString
 libipmctl.so.4:SecurityToString
@@ -1104,6 +1108,7 @@ libipmctl.so.4:SortRegionInfoById
 libipmctl.so.4:SplitStr
 libipmctl.so.4:SquashDataSet
 libipmctl.so.4:SquashDataSetCb
+libipmctl.so.4:StagedFwActivatableToString
 libipmctl.so.4:StartDiagnostic
 libipmctl.so.4:StartDiagnosticCmd
 libipmctl.so.4:StartFormat

@@ -480,6 +480,7 @@ libipmctl.so.4:FwCmdSetAlarmThresholds
 libipmctl.so.4:FwCmdSetOptionalConfigurationDataPolicy
 libipmctl.so.4:FwCmdSetPMONRegisters
 libipmctl.so.4:FwCmdSetPlatformConfigData
+libipmctl.so.4:FwCmdUpdateFw
 libipmctl.so.4:FwGetPCDFromOffsetSmallPayload
 libipmctl.so.4:FwHasBeenStaged
 libipmctl.so.4:FwSetPCDFromOffsetSmallPayload
@@ -739,15 +740,18 @@ libipmctl.so.4:IsDevicePathEndInstance
 libipmctl.so.4:IsDevicePathEndType
 libipmctl.so.4:IsDevicePathMultiInstance
 libipmctl.so.4:IsDevicePathValid
+libipmctl.so.4:IsDimmAllowed
 libipmctl.so.4:IsDimmIdManageable
+libipmctl.so.4:IsDimmInPmMappedPopulationViolation
+libipmctl.so.4:IsDimmInPopulationViolation
 libipmctl.so.4:IsDimmInSupportedConfig
+libipmctl.so.4:IsDimmInUnmappedPopulationViolation
 libipmctl.so.4:IsDimmInterfaceCodeSupported
 libipmctl.so.4:IsDimmInterfaceCodeSupportedByValues
 libipmctl.so.4:IsDimmLocked
 libipmctl.so.4:IsDimmManageable
 libipmctl.so.4:IsDimmManageableByDimmInfo
 libipmctl.so.4:IsDimmManageableByValues
-libipmctl.so.4:IsDimmNotAllowed
 libipmctl.so.4:IsDimmSkuModeMismatch
 libipmctl.so.4:IsDimmsMixedSkuCfg
 libipmctl.so.4:IsFwApiVersionSupported
@@ -1192,7 +1196,6 @@ libipmctl.so.4:UnicodeStrnToAsciiStrS
 libipmctl.so.4:UnicodeVSPrint
 libipmctl.so.4:UninstallNamespaceProtocols
 libipmctl.so.4:UnitsToStr
-libipmctl.so.4:UpdateDimmFw
 libipmctl.so.4:UpdateFw
 libipmctl.so.4:UpdateIntelDIMMConfig
 libipmctl.so.4:UpdateLsaIndex

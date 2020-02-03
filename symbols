@@ -379,7 +379,6 @@ libipmctl.so.4:DiagnosticResultToStr
 libipmctl.so.4:DiagnosticsManageabilityCheck
 libipmctl.so.4:DimmFormat
 libipmctl.so.4:DimmWPQFlush
-libipmctl.so.4:DisplayCommandStatus
 libipmctl.so.4:DivU64x32
 libipmctl.so.4:DivU64x32Remainder
 libipmctl.so.4:DumpConfigToFile
@@ -757,6 +756,7 @@ libipmctl.so.4:IsDimmsMixedSkuCfg
 libipmctl.so.4:IsFwApiVersionSupported
 libipmctl.so.4:IsFwApiVersionSupportedByValues
 libipmctl.so.4:IsFwStaged
+libipmctl.so.4:IsGetSecurityOptInSupported
 libipmctl.so.4:IsHexOrDecimalNumber
 libipmctl.so.4:IsHexStr
 libipmctl.so.4:IsHexValue

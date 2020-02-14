@@ -1,0 +1,395 @@
+From bfec0895f3ca8584470d2d379a8a77f6b6e28095 Mon Sep 17 00:00:00 2001
+From: Steven Pontsler <steven.pontsler@intel.com>
+Date: Mon, 3 Feb 2020 13:49:12 -0800
+Subject: [PATCH 2/8] Generate documentation output list from input list
+
+---
+ CMakeLists.txt | 82 +++++++++++++-------------------------------------
+ 1 file changed, 21 insertions(+), 61 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ff080015d..ec3ebcc73 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -681,51 +681,27 @@ if((ASCIIDOCTOR_FOUND OR A2X_FOUND) AND LNX_BUILD)
+ 		${ROOT}/Documentation/ipmctl/Debug/ipmctl-dump-session.txt
+ 		)
+ 
+-	set(MANPAGE_OUTPUT_FILES
+-		${OUTPUT_DIR}/manpage/ipmctl.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-show-device.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-show-memory-resources.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-show-socket.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-show-system-capabilities.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-show-topology.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-change-device-passphrase.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-change-device-security.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-create-goal.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-delete-goal.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-dump-goal.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-enable-device-security.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-erase-device-data.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-load-goal.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-show-goal.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-show-region.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-change-sensor.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-show-performance.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-show-sensor.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-change-preferences.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-dump-support-data.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-help.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-modify-device.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-show-firmware.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-show-preferences.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-update-firmware.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-version.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-show-pcd.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-delete-pcd.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-dump-debug-log.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-inject-error.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-show-cap.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-show-cel.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-start-diagnostic.1.gz
+-#		${OUTPUT_DIR}/manpage/ipmctl-diagnostic-events.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-show-acpi.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-show-error-log.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-start-session.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-stop-session.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-dump-session.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-load-session.1.gz
+-		${OUTPUT_DIR}/manpage/ipmctl-show-session.1.gz
+-		)
+-
++	list(LENGTH DOCUMENTATION_INPUT_FILES LEN)
++	math(EXPR INPUT_LENGTH "${LEN} -1")
++	foreach(INDEX RANGE ${INPUT_LENGTH})
++		list(GET DOCUMENTATION_INPUT_FILES ${INDEX} MAN_INPUT)
++		string(REGEX MATCH "[^/]*$" MAN_BARE_FILENAME ${MAN_INPUT})
++		string(CONCAT MAN_TMP_INPUT ${OUTPUT_DIR} "/manpage/" ${MAN_BARE_FILENAME})
++		string(REGEX REPLACE "txt$" "1.gz$" MAN_OUTPUT ${MAN_TMP_INPUT})
++		list(APPEND MANPAGE_OUTPUT_FILES ${MAN_OUTPUT})
++		if(NOT ASCIIDOCTOR_FOUND)
++			string(REGEX REPLACE "\\.[^.]*$" "" MAN_GZ_INPUT ${MAN_OUTPUT})
++			add_custom_command(OUTPUT ${MAN_OUTPUT}
++				COMMENT "Clean out link markup because they are invalid in the manpages"
++				COMMAND sed -e 's/<</\\[/g' -e 's/>>/]/g' ${MAN_INPUT} > ${MAN_TMP_INPUT}
++				COMMAND ${A2X_BINARIES} -f manpage -a mansource=ipmctl -a manmanual="ipmctl" -a ipmctl_version=${IPMCTL_VERSION_STRING} -a os_build=1 -a manpage=1 -D ${OUTPUT_DIR}/manpage ${MAN_TMP_INPUT} 
++				COMMAND gzip -f ${MAN_GZ_INPUT}
++				COMMAND rm -f ${MAN_TMP_INPUT}
++				COMMENT "Generating man pages"
++				DEPENDS ${MAN_INPUT}
++			)
++		endif()
++	endforeach()
+ 	add_custom_target(manpage ALL
+ 		DEPENDS ${MANPAGE_OUTPUT_FILES} ${DOCUMENTATION_INPUT_FILES}
+ 		)
+@@ -736,22 +712,6 @@ if((ASCIIDOCTOR_FOUND OR A2X_FOUND) AND LNX_BUILD)
+ 			COMMENT "Generating man pages"
+ 			DEPENDS ${DOCUMENTATION_INPUT_FILES}
+ 			)
+-	else()
+-		list(LENGTH DOCUMENTATION_INPUT_FILES LEN)
+-		math(EXPR INPUT_LENGTH "${LEN} -1")
+-		foreach(INDEX RANGE ${INPUT_LENGTH})
+-			list(GET DOCUMENTATION_INPUT_FILES ${INDEX} MAN_INPUT)
+-			list(GET MANPAGE_OUTPUT_FILES ${INDEX} MAN_OUTPUT)
+-			string(REGEX REPLACE "\\.[^.]*$" "" MAN_GZ_INPUT ${MAN_OUTPUT})
+-			string(REGEX REPLACE "1.gz$" "tmp.txt" MAN_TMP_INPUT ${MAN_OUTPUT})
+-			add_custom_command(OUTPUT ${MAN_OUTPUT}
+-				COMMAND sed -e 's/<</\\[/g' -e 's/>>/]/g' ${MAN_INPUT} > ${MAN_TMP_INPUT}
+-				COMMAND ${A2X_BINARIES} -f manpage -a mansource=ipmctl -a manmanual="ipmctl" -a ipmctl_version=${IPMCTL_VERSION_STRING} -a os_build=1 -a manpage=1 -D ${OUTPUT_DIR}/manpage ${MAN_TMP_INPUT} 
+-				COMMAND gzip -f ${MAN_GZ_INPUT}
+-				COMMENT "Generating man pages"
+-				DEPENDS ${MAN_INPUT}
+-				)
+-		endforeach()
+ 	endif()
+ endif()
+ 
+-- 
+2.20.1.windows.1
+
+
+From e9acbe27108648b29e49ba2d004cbefd3105d5b8 Mon Sep 17 00:00:00 2001
+From: Steven Pontsler <steven.pontsler@intel.com>
+Date: Mon, 3 Feb 2020 19:50:23 +0000
+Subject: [PATCH 3/8] Changes to build manpageswith a2x
+
+---
+ CMakeLists.txt                                     | 2 +-
+ Documentation/ipmctl/Debug/ipmctl-load-session.txt | 2 ++
+ Documentation/ipmctl/Debug/ipmctl-show-session.txt | 3 ++-
+ Documentation/ipmctl/Debug/ipmctl-stop-session.txt | 2 ++
+ 4 files changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ec3ebcc73..372b10d1b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -687,7 +687,7 @@ if((ASCIIDOCTOR_FOUND OR A2X_FOUND) AND LNX_BUILD)
+ 		list(GET DOCUMENTATION_INPUT_FILES ${INDEX} MAN_INPUT)
+ 		string(REGEX MATCH "[^/]*$" MAN_BARE_FILENAME ${MAN_INPUT})
+ 		string(CONCAT MAN_TMP_INPUT ${OUTPUT_DIR} "/manpage/" ${MAN_BARE_FILENAME})
+-		string(REGEX REPLACE "txt$" "1.gz$" MAN_OUTPUT ${MAN_TMP_INPUT})
++		string(REGEX REPLACE "txt$" "1.gz" MAN_OUTPUT ${MAN_TMP_INPUT})
+ 		list(APPEND MANPAGE_OUTPUT_FILES ${MAN_OUTPUT})
+ 		if(NOT ASCIIDOCTOR_FOUND)
+ 			string(REGEX REPLACE "\\.[^.]*$" "" MAN_GZ_INPUT ${MAN_OUTPUT})
+diff --git a/Documentation/ipmctl/Debug/ipmctl-load-session.txt b/Documentation/ipmctl/Debug/ipmctl-load-session.txt
+index f7b8af17d..8d8567fa6 100644
+--- a/Documentation/ipmctl/Debug/ipmctl-load-session.txt
++++ b/Documentation/ipmctl/Debug/ipmctl-load-session.txt
+@@ -56,9 +56,11 @@ ____
+ 
+ LIMITATIONS
+ -----------
++None.
+ 
+ RETURN DATA
+ -----------
++None.
+ 
+ SAMPLE OUTPUT
+ -------------
+diff --git a/Documentation/ipmctl/Debug/ipmctl-show-session.txt b/Documentation/ipmctl/Debug/ipmctl-show-session.txt
+index 5e1e766b2..753d53483 100644
+--- a/Documentation/ipmctl/Debug/ipmctl-show-session.txt
++++ b/Documentation/ipmctl/Debug/ipmctl-show-session.txt
+@@ -58,6 +58,7 @@ may be loaded via the 'load -session' command or made active via the
+ 
+ RETURN DATA
+ -----------
++None.
+ 
+ SAMPLE OUTPUT
+ -------------
+@@ -67,4 +68,4 @@ TagID | RC | Args
+ ============================
+  0x0*  | 0  | show -sensor
+  0x1   | 0  | show -dimm
+-____
+\ No newline at end of file
++____
+diff --git a/Documentation/ipmctl/Debug/ipmctl-stop-session.txt b/Documentation/ipmctl/Debug/ipmctl-stop-session.txt
+index b29099e91..42e03f180 100644
+--- a/Documentation/ipmctl/Debug/ipmctl-stop-session.txt
++++ b/Documentation/ipmctl/Debug/ipmctl-stop-session.txt
+@@ -56,9 +56,11 @@ ____
+ 
+ LIMITATIONS
+ -----------
++Session must have already been started.
+ 
+ RETURN DATA
+ -----------
++None.
+ 
+ SAMPLE OUTPUT
+ -------------
+-- 
+2.20.1.windows.1
+
+
+From 7611c4fafd55c28b114b25982675817da95b16a4 Mon Sep 17 00:00:00 2001
+From: Steven Pontsler <steven.pontsler@intel.com>
+Date: Mon, 3 Feb 2020 14:23:12 -0800
+Subject: [PATCH 4/8] Change to None. as that is what was there before
+
+---
+ Documentation/ipmctl/Debug/ipmctl-stop-session.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Documentation/ipmctl/Debug/ipmctl-stop-session.txt b/Documentation/ipmctl/Debug/ipmctl-stop-session.txt
+index 42e03f180..ebd7dcd27 100644
+--- a/Documentation/ipmctl/Debug/ipmctl-stop-session.txt
++++ b/Documentation/ipmctl/Debug/ipmctl-stop-session.txt
+@@ -56,7 +56,7 @@ ____
+ 
+ LIMITATIONS
+ -----------
+-Session must have already been started.
++None.
+ 
+ RETURN DATA
+ -----------
+-- 
+2.20.1.windows.1
+
+
+From 55b52aca6f311c6745dbef65173245414998822f Mon Sep 17 00:00:00 2001
+From: Steven Pontsler <steven.pontsler@intel.com>
+Date: Mon, 3 Feb 2020 15:00:26 -0800
+Subject: [PATCH 5/8] Changes to make CMakeLists.txt compatible with more
+ versions of cmake
+
+---
+ CMakeLists.txt | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 372b10d1b..ea9c785dc 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3,6 +3,8 @@
+ 
+ cmake_minimum_required(VERSION 2.8.12)
+ 
++message("cmake version: " ${CMAKE_VERSION})
++
+ project(ipmctl)
+ 
+ set(CMAKE_VERBOSE_MAKEFILE on)
+@@ -686,8 +688,9 @@ if((ASCIIDOCTOR_FOUND OR A2X_FOUND) AND LNX_BUILD)
+ 	foreach(INDEX RANGE ${INPUT_LENGTH})
+ 		list(GET DOCUMENTATION_INPUT_FILES ${INDEX} MAN_INPUT)
+ 		string(REGEX MATCH "[^/]*$" MAN_BARE_FILENAME ${MAN_INPUT})
+-		string(CONCAT MAN_TMP_INPUT ${OUTPUT_DIR} "/manpage/" ${MAN_BARE_FILENAME})
+-		string(REGEX REPLACE "txt$" "1.gz" MAN_OUTPUT ${MAN_TMP_INPUT})
++		set(MAN_TMP_INPUT "")
++		string(APPEND MAN_TMP_INPUT ${OUTPUT_DIR} "/manpage/" ${MAN_BARE_FILENAME})
++		string(REGEX REPLACE "txt$" "1.gz" MAN_OUTPUT "${MAN_TMP_INPUT}")
+ 		list(APPEND MANPAGE_OUTPUT_FILES ${MAN_OUTPUT})
+ 		if(NOT ASCIIDOCTOR_FOUND)
+ 			string(REGEX REPLACE "\\.[^.]*$" "" MAN_GZ_INPUT ${MAN_OUTPUT})
+-- 
+2.20.1.windows.1
+
+
+From 3444c2c0a7bc5f9c75db82f68d029dbc5f541aa1 Mon Sep 17 00:00:00 2001
+From: Steven Pontsler <steven.pontsler@intel.com>
+Date: Mon, 3 Feb 2020 15:18:29 -0800
+Subject: [PATCH 6/8] remove string append because not in older cmake
+
+---
+ CMakeLists.txt | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ea9c785dc..f75caa6cf 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -688,8 +688,7 @@ if((ASCIIDOCTOR_FOUND OR A2X_FOUND) AND LNX_BUILD)
+ 	foreach(INDEX RANGE ${INPUT_LENGTH})
+ 		list(GET DOCUMENTATION_INPUT_FILES ${INDEX} MAN_INPUT)
+ 		string(REGEX MATCH "[^/]*$" MAN_BARE_FILENAME ${MAN_INPUT})
+-		set(MAN_TMP_INPUT "")
+-		string(APPEND MAN_TMP_INPUT ${OUTPUT_DIR} "/manpage/" ${MAN_BARE_FILENAME})
++		set(MAN_TMP_INPUT ${OUTPUT_DIR}"/manpage/"${MAN_BARE_FILENAME})
+ 		string(REGEX REPLACE "txt$" "1.gz" MAN_OUTPUT "${MAN_TMP_INPUT}")
+ 		list(APPEND MANPAGE_OUTPUT_FILES ${MAN_OUTPUT})
+ 		if(NOT ASCIIDOCTOR_FOUND)
+-- 
+2.20.1.windows.1
+
+
+From 4216ab336fef0245beeda3004cf5c36b52fd3651 Mon Sep 17 00:00:00 2001
+From: Mackevin Fey <mackevin.fey@intel.com>
+Date: Mon, 3 Feb 2020 23:52:05 +0100
+Subject: [PATCH 7/8] HSD22010222890-goal-config-xml-text-outside-tags: Fix xml
+ output for goal configuration commands
+
+Fix error in which text was occurring outside xml tags for relevant
+goal configuration commands.
+
+Signed-off-by: MacKevin Fey <mackevin.fey@intel.com>
+---
+ .../ipmctl/Memory_Subsystem_Provisioning/ipmctl-create-goal.txt | 2 +-
+ .../ipmctl/Memory_Subsystem_Provisioning/ipmctl-load-goal.txt   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Documentation/ipmctl/Memory_Subsystem_Provisioning/ipmctl-create-goal.txt b/Documentation/ipmctl/Memory_Subsystem_Provisioning/ipmctl-create-goal.txt
+index c5d195099..c4db84628 100644
+--- a/Documentation/ipmctl/Memory_Subsystem_Provisioning/ipmctl-create-goal.txt
++++ b/Documentation/ipmctl/Memory_Subsystem_Provisioning/ipmctl-create-goal.txt
+@@ -58,7 +58,7 @@ NOTE: The -ddrt and -smbus options are mutually exclusive and may not be used to
+ ifdef::os_build[]
+ -o (text|nvmxml)::
+ -output (text|nvmxml)::
+-    Changes the output format. One of: "text" (default) or "nvmxml".
++    Changes the output format. One of: "text" (default) or "nvmxml". The "nvmxml" format implies the "-force" flag.
+ endif::os_build[]
+ 
+ -u (B|MB|MiB|GB|GiB|TB| TiB)::
+diff --git a/Documentation/ipmctl/Memory_Subsystem_Provisioning/ipmctl-load-goal.txt b/Documentation/ipmctl/Memory_Subsystem_Provisioning/ipmctl-load-goal.txt
+index 230ebb5a5..17de5fe60 100644
+--- a/Documentation/ipmctl/Memory_Subsystem_Provisioning/ipmctl-load-goal.txt
++++ b/Documentation/ipmctl/Memory_Subsystem_Provisioning/ipmctl-load-goal.txt
+@@ -57,7 +57,7 @@ NOTE: The -lpmb and -spmb options are mutually exclusive and may not be used tog
+ ifdef::os_build[]
+ -o (text|nvmxml)::
+ -output (text|nvmxml)::
+-    Changes the output format. One of: "text" (default) or "nvmxml".
++    Changes the output format. One of: "text" (default) or "nvmxml". The "nvmxml" format implies the "-force" flag.
+ endif::os_build[]
+ 
+ -u (B|MB|MiB|GB|GiB|TB| TiB)::
+-- 
+2.20.1.windows.1
+
+
+From c479a80de8995877d8f2a8162794b034b03e0148 Mon Sep 17 00:00:00 2001
+From: Steven Pontsler <steven.pontsler@intel.com>
+Date: Tue, 11 Feb 2020 15:17:06 -0800
+Subject: [PATCH 8/8] Documentation changes based on review comments
+
+---
+ Documentation/ipmctl/Debug/ipmctl-load-session.txt | 8 --------
+ Documentation/ipmctl/Debug/ipmctl-show-session.txt | 4 ----
+ Documentation/ipmctl/Debug/ipmctl-stop-session.txt | 6 +-----
+ 3 files changed, 1 insertion(+), 17 deletions(-)
+
+diff --git a/Documentation/ipmctl/Debug/ipmctl-load-session.txt b/Documentation/ipmctl/Debug/ipmctl-load-session.txt
+index 8d8567fa6..a5504ecf5 100644
+--- a/Documentation/ipmctl/Debug/ipmctl-load-session.txt
++++ b/Documentation/ipmctl/Debug/ipmctl-load-session.txt
+@@ -54,14 +54,6 @@ ____
+ ipmctl load -source /tmp/session.pbr -session
+ ____
+ 
+-LIMITATIONS
+------------
+-None.
+-
+-RETURN DATA
+------------
+-None.
+-
+ SAMPLE OUTPUT
+ -------------
+ [verse]
+diff --git a/Documentation/ipmctl/Debug/ipmctl-show-session.txt b/Documentation/ipmctl/Debug/ipmctl-show-session.txt
+index 753d53483..75dae373d 100644
+--- a/Documentation/ipmctl/Debug/ipmctl-show-session.txt
++++ b/Documentation/ipmctl/Debug/ipmctl-show-session.txt
+@@ -56,10 +56,6 @@ A session must be loaded or active prior to executing this command.  A session
+ may be loaded via the 'load -session' command or made active via the
+ 'start -session' command.
+ 
+-RETURN DATA
+------------
+-None.
+-
+ SAMPLE OUTPUT
+ -------------
+ [verse]
+diff --git a/Documentation/ipmctl/Debug/ipmctl-stop-session.txt b/Documentation/ipmctl/Debug/ipmctl-stop-session.txt
+index ebd7dcd27..42f8eb835 100644
+--- a/Documentation/ipmctl/Debug/ipmctl-stop-session.txt
++++ b/Documentation/ipmctl/Debug/ipmctl-stop-session.txt
+@@ -56,11 +56,7 @@ ____
+ 
+ LIMITATIONS
+ -----------
+-None.
+-
+-RETURN DATA
+------------
+-None.
++A session must be already started.
+ 
+ SAMPLE OUTPUT
+ -------------
+-- 
+2.20.1.windows.1
+

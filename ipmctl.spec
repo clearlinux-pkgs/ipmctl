@@ -4,7 +4,7 @@
 #
 Name     : ipmctl
 Version  : 02.00.00.3709
-Release  : 50
+Release  : 52
 URL      : https://github.com/intel/ipmctl/archive/v02.00.00.3709/ipmctl-02.00.00.3709.tar.gz
 Source0  : https://github.com/intel/ipmctl/archive/v02.00.00.3709/ipmctl-02.00.00.3709.tar.gz
 Summary  : Manage Intel DC Optane persistent memory modules
@@ -14,6 +14,8 @@ Requires: ipmctl-bin = %{version}-%{release}
 Requires: ipmctl-data = %{version}-%{release}
 Requires: ipmctl-lib = %{version}-%{release}
 Requires: ipmctl-license = %{version}-%{release}
+Requires: ipmctl-man = %{version}-%{release}
+BuildRequires : asciidoc
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-distutils3
 BuildRequires : doxygen
@@ -23,14 +25,11 @@ BuildRequires : pkg-config
 BuildRequires : pkgconfig(libndctl)
 BuildRequires : pkgconfig(systemd)
 BuildRequires : python3
+Patch1: DocsPathFor3709-1.patch
 
 %description
-### Introduction
-Brotli is a generic-purpose lossless compression algorithm that compresses data
-using a combination of a modern variant of the LZ77 algorithm, Huffman coding
-and 2nd order context modeling, with a compression ratio comparable to the best
-currently available general-purpose compression methods. It is similar in speed
-with deflate but offers more dense compression.
+Oniguruma  ----   (C) K.Kosako <sndgk393 AT ybb DOT ne DOT jp>
+http://www.geocities.jp/kosako3/oniguruma/
 
 %package bin
 Summary: bin components for the ipmctl package.
@@ -58,7 +57,6 @@ Requires: ipmctl-bin = %{version}-%{release}
 Requires: ipmctl-data = %{version}-%{release}
 Provides: ipmctl-devel = %{version}-%{release}
 Requires: ipmctl = %{version}-%{release}
-Requires: ipmctl = %{version}-%{release}
 
 %description dev
 dev components for the ipmctl package.
@@ -67,6 +65,7 @@ dev components for the ipmctl package.
 %package doc
 Summary: doc components for the ipmctl package.
 Group: Documentation
+Requires: ipmctl-man = %{version}-%{release}
 
 %description doc
 doc components for the ipmctl package.
@@ -90,19 +89,27 @@ Group: Default
 license components for the ipmctl package.
 
 
+%package man
+Summary: man components for the ipmctl package.
+Group: Default
+
+%description man
+man components for the ipmctl package.
+
+
 %prep
 %setup -q -n ipmctl-02.00.00.3709
 cd %{_builddir}/ipmctl-02.00.00.3709
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1580745740
+export SOURCE_DATE_EPOCH=1581649523
 mkdir -p clr-build
 pushd clr-build
-# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -111,12 +118,13 @@ export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
-%cmake ..
+%cmake .. -DASCIIDOC_BINARY=/usr/bin/asciidoc \
+-DA2X_BINARY=/usr/bin/a2x
 make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1580745740
+export SOURCE_DATE_EPOCH=1581649523
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ipmctl
 cp %{_builddir}/ipmctl-02.00.00.3709/BaseTools/License.txt %{buildroot}/usr/share/package-licenses/ipmctl/716291b5f2b61d3f09e8695d22dc8b539d8c9648
@@ -169,3 +177,47 @@ rm -f %{buildroot}/usr/etc/logrotate.d/ipmctl
 /usr/share/package-licenses/ipmctl/b0d64f0b0dd0585917fbead12758d45912c962ce
 /usr/share/package-licenses/ipmctl/c045813a6c514f2d30d60a07c6aaf3603850e608
 /usr/share/package-licenses/ipmctl/c2401e81d7dc4dd069167ad3a2c7dafeb0eef2e0
+
+%files man
+%defattr(0644,root,root,0755)
+/usr/share/man/man1/ipmctl-change-device-passphrase.1.gz
+/usr/share/man/man1/ipmctl-change-device-security.1.gz
+/usr/share/man/man1/ipmctl-change-preferences.1.gz
+/usr/share/man/man1/ipmctl-change-sensor.1.gz
+/usr/share/man/man1/ipmctl-create-goal.1.gz
+/usr/share/man/man1/ipmctl-delete-goal.1.gz
+/usr/share/man/man1/ipmctl-delete-pcd.1.gz
+/usr/share/man/man1/ipmctl-dump-debug-log.1.gz
+/usr/share/man/man1/ipmctl-dump-goal.1.gz
+/usr/share/man/man1/ipmctl-dump-session.1.gz
+/usr/share/man/man1/ipmctl-dump-support-data.1.gz
+/usr/share/man/man1/ipmctl-enable-device-security.1.gz
+/usr/share/man/man1/ipmctl-erase-device-data.1.gz
+/usr/share/man/man1/ipmctl-help.1.gz
+/usr/share/man/man1/ipmctl-inject-error.1.gz
+/usr/share/man/man1/ipmctl-load-goal.1.gz
+/usr/share/man/man1/ipmctl-load-session.1.gz
+/usr/share/man/man1/ipmctl-modify-device.1.gz
+/usr/share/man/man1/ipmctl-show-acpi.1.gz
+/usr/share/man/man1/ipmctl-show-cap.1.gz
+/usr/share/man/man1/ipmctl-show-cel.1.gz
+/usr/share/man/man1/ipmctl-show-device.1.gz
+/usr/share/man/man1/ipmctl-show-error-log.1.gz
+/usr/share/man/man1/ipmctl-show-firmware.1.gz
+/usr/share/man/man1/ipmctl-show-goal.1.gz
+/usr/share/man/man1/ipmctl-show-memory-resources.1.gz
+/usr/share/man/man1/ipmctl-show-pcd.1.gz
+/usr/share/man/man1/ipmctl-show-performance.1.gz
+/usr/share/man/man1/ipmctl-show-preferences.1.gz
+/usr/share/man/man1/ipmctl-show-region.1.gz
+/usr/share/man/man1/ipmctl-show-sensor.1.gz
+/usr/share/man/man1/ipmctl-show-session.1.gz
+/usr/share/man/man1/ipmctl-show-socket.1.gz
+/usr/share/man/man1/ipmctl-show-system-capabilities.1.gz
+/usr/share/man/man1/ipmctl-show-topology.1.gz
+/usr/share/man/man1/ipmctl-start-diagnostic.1.gz
+/usr/share/man/man1/ipmctl-start-session.1.gz
+/usr/share/man/man1/ipmctl-stop-session.1.gz
+/usr/share/man/man1/ipmctl-update-firmware.1.gz
+/usr/share/man/man1/ipmctl-version.1.gz
+/usr/share/man/man1/ipmctl.1.gz

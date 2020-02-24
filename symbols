@@ -506,7 +506,6 @@ libipmctl.so.4:GetBitFieldForNumOfChannelWays
 libipmctl.so.4:GetBlockDataWindowRegDescTabl
 libipmctl.so.4:GetBlockDeviceBlockSize
 libipmctl.so.4:GetBwCommandStatus
-libipmctl.so.4:GetCapacities
 libipmctl.so.4:GetCommandAccessPolicy
 libipmctl.so.4:GetCommandEffectLog
 libipmctl.so.4:GetControlRegionTableForNvDimmRegionTable
@@ -520,6 +519,7 @@ libipmctl.so.4:GetDataSet
 libipmctl.so.4:GetDataSetName
 libipmctl.so.4:GetDataSetNameInfo
 libipmctl.so.4:GetDataSetUserData
+libipmctl.so.4:GetDcpmmCapacities
 libipmctl.so.4:GetDdrtIoInitInfo
 libipmctl.so.4:GetDeviceAndFilePath
 libipmctl.so.4:GetDevicePathSize
@@ -654,6 +654,7 @@ libipmctl.so.4:GetSystemTopology
 libipmctl.so.4:GetTargetValue
 libipmctl.so.4:GetTimeFormatString
 libipmctl.so.4:GetTopologyAndInterleaveSetMapInfoBasedOnProcessorType
+libipmctl.so.4:GetTotalDcpmmCapacities
 libipmctl.so.4:GetU64FromString
 libipmctl.so.4:GetUintsFromString
 libipmctl.so.4:GetUninitializedDimmCount
@@ -1007,7 +1008,9 @@ libipmctl.so.4:RetrieveIntelDIMMConfig
 libipmctl.so.4:RetrieveInterleaveSetMap
 libipmctl.so.4:RetrieveMaxPMInterleaveSets
 libipmctl.so.4:RetrieveNamespacesFromLsa
-libipmctl.so.4:RetrievePcatSocketSkuInfoTable
+libipmctl.so.4:RetrievePcatSocketSkuCachedMemory
+libipmctl.so.4:RetrievePcatSocketSkuMappedMemoryLimit
+libipmctl.so.4:RetrievePcatSocketSkuTotalMappedMemory
 libipmctl.so.4:RetrieveRegionGoalFromInterleaveInformationTable
 libipmctl.so.4:RetrieveSupportediMcAndChannelInterleaveSizes
 libipmctl.so.4:RunConfigDiagnostics

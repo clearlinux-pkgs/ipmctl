@@ -458,6 +458,7 @@ libipmctl.so.4:FwCmdGetExtendedAdrInfo
 libipmctl.so.4:FwCmdGetFirmwareImageInfo
 libipmctl.so.4:FwCmdGetFwDebugLog
 libipmctl.so.4:FwCmdGetFwDebugLogSize
+libipmctl.so.4:FwCmdGetLatchSystemShutdownStateInfo
 libipmctl.so.4:FwCmdGetLongOperationStatus
 libipmctl.so.4:FwCmdGetMemoryInfoPage
 libipmctl.so.4:FwCmdGetOptionalConfigurationDataPolicy

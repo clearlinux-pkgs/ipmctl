@@ -226,7 +226,6 @@ libipmctl.so.4:DecodePcatCurrentMemoryMode
 libipmctl.so.4:DecodePcatInterleaveFormatSupported
 libipmctl.so.4:DecodePcatMemoryModeCapabilities
 libipmctl.so.4:DefaultPassThru
-libipmctl.so.4:DeleteDimm
 libipmctl.so.4:DeleteFile
 libipmctl.so.4:DeleteGoal
 libipmctl.so.4:DeleteGoalConfig
@@ -735,7 +734,6 @@ libipmctl.so.4:IsChecksumValid
 libipmctl.so.4:IsConfiguringAllowed
 libipmctl.so.4:IsConfiguringForCreateGoalAllowed
 libipmctl.so.4:IsDebugLoggerEnabled
-libipmctl.so.4:IsDecimalDigitCharacter
 libipmctl.so.4:IsDevicePathEnd
 libipmctl.so.4:IsDevicePathEndInstance
 libipmctl.so.4:IsDevicePathEndType
@@ -762,7 +760,6 @@ libipmctl.so.4:IsGetSecurityOptInSupported
 libipmctl.so.4:IsHexOrDecimalNumber
 libipmctl.so.4:IsHexStr
 libipmctl.so.4:IsHexValue
-libipmctl.so.4:IsHexaDecimalDigitCharacter
 libipmctl.so.4:IsLSANotInitializedOnDimms
 libipmctl.so.4:IsLargePayloadAvailable
 libipmctl.so.4:IsLeaf
@@ -829,6 +826,9 @@ libipmctl.so.4:NvmDimmDriverDriverBindingStop
 libipmctl.so.4:NvmDimmDriverDriverBindingSupported
 libipmctl.so.4:NvmDimmDriverDriverEntryPoint
 libipmctl.so.4:NvmDimmDriverUnload
+libipmctl.so.4:NvmIsDecimalDigitCharacter
+libipmctl.so.4:NvmIsHexaDecimalDigitCharacter
+libipmctl.so.4:NvmToUpper
 libipmctl.so.4:OpenFile
 libipmctl.so.4:OpenFileBinary
 libipmctl.so.4:OpenFileByDevice
@@ -954,7 +954,6 @@ libipmctl.so.4:RegionTypeToString
 libipmctl.so.4:RegisterCommand
 libipmctl.so.4:RegisterCommands
 libipmctl.so.4:RegisterCreateGoalCommand
-libipmctl.so.4:RegisterDeleteDimmCommand
 libipmctl.so.4:RegisterDeleteGoalCommand
 libipmctl.so.4:RegisterDeletePcdCommand
 libipmctl.so.4:RegisterDumpDebugCommand
@@ -1164,7 +1163,6 @@ libipmctl.so.4:SwapListEntries
 libipmctl.so.4:TargetCount
 libipmctl.so.4:TargetMatchCount
 libipmctl.so.4:ThresholdsCheck
-libipmctl.so.4:ToUpper
 libipmctl.so.4:TransformFwTempToRealValue
 libipmctl.so.4:TransformRealValueToFwTemp
 libipmctl.so.4:TrimString

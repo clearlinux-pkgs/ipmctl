@@ -7,6 +7,7 @@ libipmctl.so.4:AddStringToUnicodeTable
 libipmctl.so.4:AlignLabelStorageArea
 libipmctl.so.4:AlignNamespaceCapacity
 libipmctl.so.4:AllDimmsInListAreManageable
+libipmctl.so.4:AllDimmsInListHaveMasterPassphraseEnabled
 libipmctl.so.4:AllDimmsInListInSupportedConfig
 libipmctl.so.4:AllElementsInArrayZero
 libipmctl.so.4:AllocateCopyPool
@@ -896,8 +897,6 @@ libipmctl.so.4:PrintNFit
 libipmctl.so.4:PrintNamespaceIndex
 libipmctl.so.4:PrintNamespaceLabel
 libipmctl.so.4:PrintNoBuffer
-libipmctl.so.4:PrintPMTT
-libipmctl.so.4:PrintPMTT2
 libipmctl.so.4:PrintPcat
 libipmctl.so.4:PrintPcatTable
 libipmctl.so.4:PrintPcdConfInput
@@ -910,6 +909,10 @@ libipmctl.so.4:PrintPcdInterleaveInformation
 libipmctl.so.4:PrintPcdPartitionSizeChange
 libipmctl.so.4:PrintPcdPcatTableHeader
 libipmctl.so.4:PrintPcdTableHeader
+libipmctl.so.4:PrintPmtt
+libipmctl.so.4:PrintPmttCommonHeader
+libipmctl.so.4:PrintPmttRev1
+libipmctl.so.4:PrintPmttRev2
 libipmctl.so.4:PrintProgress
 libipmctl.so.4:PrinterCreateCtx
 libipmctl.so.4:PrinterDestroyCtx

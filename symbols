@@ -498,6 +498,7 @@ libipmctl.so.4:GetAcpiTables
 libipmctl.so.4:GetActualRegionsGoalCapacities
 libipmctl.so.4:GetAlarmThresholds
 libipmctl.so.4:GetAllDimmList
+libipmctl.so.4:GetAllManageableDimmsNumberAndId
 libipmctl.so.4:GetAllNvmStatusCodeMessages
 libipmctl.so.4:GetAndParseFwErrorLogForDimm
 libipmctl.so.4:GetAppDirectLabelByUUID

@@ -132,6 +132,7 @@ libipmctl.so.4:CheckForExistingGoalConfigPerSocket
 libipmctl.so.4:CheckForLongOpStatusInProgress
 libipmctl.so.4:CheckFwConsistency
 libipmctl.so.4:CheckGoalStatus
+libipmctl.so.4:CheckIfAllDimmsConfigured
 libipmctl.so.4:CheckIfBiosSupportsConfigChange
 libipmctl.so.4:CheckIfLanguageIsSupported
 libipmctl.so.4:CheckImage
@@ -1017,6 +1018,7 @@ libipmctl.so.4:RetrievePcatSocketSkuMappedMemoryLimit
 libipmctl.so.4:RetrievePcatSocketSkuTotalMappedMemory
 libipmctl.so.4:RetrieveRegionGoalFromInterleaveInformationTable
 libipmctl.so.4:RetrieveSupportediMcAndChannelInterleaveSizes
+libipmctl.so.4:ReturnErrorWithMediaDisabledPMemModule
 libipmctl.so.4:RunConfigDiagnostics
 libipmctl.so.4:RunFwDiagnostics
 libipmctl.so.4:RunQuickDiagnostics

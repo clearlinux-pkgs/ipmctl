@@ -1,5 +1,5 @@
 PKG_NAME := ipmctl
-URL = https://github.com/intel/ipmctl/archive/v02.00.00.3799/ipmctl-02.00.00.3799.tar.gz
+URL = https://github.com/intel/ipmctl/archive/v02.00.00.3809/ipmctl-02.00.00.3809.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common

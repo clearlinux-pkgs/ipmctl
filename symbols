@@ -110,6 +110,7 @@ libipmctl.so.4:BubbleSortLinkedList
 libipmctl.so.4:BuildPath
 libipmctl.so.4:CalculateActualVolatileSize
 libipmctl.so.4:CalculateDimmCapacityFromPercent
+libipmctl.so.4:CalculateFarMemorySizeForNewGoalConfigs
 libipmctl.so.4:CalculateISetCookie
 libipmctl.so.4:CalculateISetCookieVer1_1
 libipmctl.so.4:CalculateTextTableDimensions

@@ -154,6 +154,7 @@ libipmctl.so.4:CleanNamespacesAndISs
 libipmctl.so.4:CleanNamespacesList
 libipmctl.so.4:CleanStringMemory
 libipmctl.so.4:CleanUnicodeStringMemory
+libipmctl.so.4:ClearAndInitializeAllLabelStorageAreas
 libipmctl.so.4:ClearInterleavedBuffer
 libipmctl.so.4:ClearInternalGoalConfigsInfo
 libipmctl.so.4:ClearNvmStatus
@@ -679,7 +680,6 @@ libipmctl.so.4:HiiGetString
 libipmctl.so.4:HiiRemovePackages
 libipmctl.so.4:InitErrorAndWarningNvmStatusCodes
 libipmctl.so.4:InitSensorsSet
-libipmctl.so.4:InitializeAllLabelStorageAreas
 libipmctl.so.4:InitializeCommandStatus
 libipmctl.so.4:InitializeDimm
 libipmctl.so.4:InitializeDimmFieldsFromAcpiTables

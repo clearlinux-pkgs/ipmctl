@@ -4,7 +4,7 @@
 #
 Name     : ipmctl
 Version  : 02.00.00.3833
-Release  : 72
+Release  : 73
 URL      : https://github.com/intel/ipmctl/archive/v02.00.00.3833/ipmctl-02.00.00.3833.tar.gz
 Source0  : https://github.com/intel/ipmctl/archive/v02.00.00.3833/ipmctl-02.00.00.3833.tar.gz
 Summary  : Manage Intel DC Optane persistent memory modules

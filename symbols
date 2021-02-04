@@ -668,6 +668,7 @@ libipmctl.so.4:GetUnitsOption
 libipmctl.so.4:GetVendorDriverVersion
 libipmctl.so.4:GetVolumeFreeSpace
 libipmctl.so.4:GoalStatusToString
+libipmctl.so.4:GuessNvmStatusFromReturnCode
 libipmctl.so.4:GuidToStr
 libipmctl.so.4:HandleParsingLibConstructor
 libipmctl.so.4:HandleParsingLibDestructor
